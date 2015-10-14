@@ -1,0 +1,20 @@
+ -----
+ Background
+ -----
+ alexxismachine
+ -----
+ 2010-11-21
+ -----
+
+Background
+
+  This document provides an overview of the documents 
+  of this project's background information.
+
+*--*--*
+ <<Document>> | <<Description>> | 
+*--+--+
+ {{{./about.html}About ...}} | Information on the maven setup and configuration |
+*--+--+
+ {{{./site.html}Site}} | Structure of the site |
+*--+--+

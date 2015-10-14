@@ -1,0 +1,24 @@
+ -----
+ Site Aufbau
+ -----
+ alexxismachine
+ -----
+ 2013-07-11
+ -----
+
+Site Struktur und Aufbau
+
+  Da alle Projekte von der pom.xml und der site.xml dieses Projektes erben, 
+  dieses Projekt aber nicht die Wurzel der JaProSt-Site ist, 
+  hat dieses Projekt eine separate pom (site-pom.xml) und 
+  die Inhalte dieser Site sind im Verzeichnis <<<src/site-docs>>>.
+  
+Site Aufbau (To be revised)
+
+  Die aktuelle Projekt-Site ist immer die der aktuellen SNAPSHOT-Version. 
+  Nur die aktuelle Projekt-Site enthält Referenzen zu den Release-Sites der vorhergehenden Versionen dieses Projekts.
+  Die Release-Sites sind jeweils unter ihrer Versionsnummer abgelegt (SNAPSHOT oder RELASE).
+  Die Site eines Parent-Projekts der Kind-Projekt-Site referenziert immer nur die aktuelle SNAPSHOT-Version. 
+  Die aktuelle Projekt-Site wird immer ohne Version abgelegt.
+  
+  

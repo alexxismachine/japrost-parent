@@ -1,0 +1,151 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.japrost</groupId>
+	<artifactId>japrost-parent</artifactId>
+	<version>5-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>JaProSt</name>
+	<description>Java Programming Studio</description>
+	<url>${japrostProjectUrl}</url>
+
+	<organization>
+		<name>JaProSt (Ulrich David)</name>
+		<url>${japrostOrganizationUrl}</url>
+	</organization>
+	<inceptionYear>2009</inceptionYear>
+
+	<properties>
+		<!-- START values to be overwritten -->
+		<japrost.site.path>/</japrost.site.path>
+		<japrost.site.locales>de,en</japrost.site.locales>
+		<!-- END values to be overwritten -->
+		<!-- START fixed values -->
+		<japrostProjectUrl>http://www.japrost.de/</japrostProjectUrl>
+		<japrostOrganizationUrl>http://www.alexxismachine.de/</japrostOrganizationUrl>
+
+		<!-- plugin versions -->
+		<!-- scm locations -->
+		<!-- topics for site navigation -->
+		<japrostTopicPathJava>java</japrostTopicPathJava>
+		<japrostTopicPathWidlandsDoc>widelands-doc</japrostTopicPathWidlandsDoc>
+		<japrostTopicPathWidlandsDocVersion>1.0</japrostTopicPathWidlandsDocVersion>
+		<japrostTopicPathJira>jira</japrostTopicPathJira>
+		<japrostTopicPathMailToCustomField>mailtocustomfield</japrostTopicPathMailToCustomField>
+		<japrostTopicPathMailToCustomFieldVersion>1.0</japrostTopicPathMailToCustomFieldVersion>
+		<japrostTopicPathMaven>maven</japrostTopicPathMaven>
+		<japrostTopicPathDependenciesExporter>dependencies-exporter</japrostTopicPathDependenciesExporter>
+		<japrostTopicPathDependenciesExporterVersion>1.0</japrostTopicPathDependenciesExporterVersion>
+		<japrostTopicPathFrontpageReport>frontpage-report</japrostTopicPathFrontpageReport>
+		<japrostTopicPathSkin>skin</japrostTopicPathSkin>
+		<!-- END fixed values -->
+		<!-- for apt - velocity without dots -->
+		<japrostDistributionReleasesUrl>http://www.japrost.de/releases</japrostDistributionReleasesUrl>
+		<!-- site -->
+		<japrost.site.skin.artifact>japrost-skin</japrost.site.skin.artifact>
+		<japrost.site.skin.version>1-SNAPSHOT</japrost.site.skin.version>
+		<!-- reporting -->
+		<version.japrost.frontpage.report>2.0</version.japrost.frontpage.report>
+		<version.maven.project-info-reports>2.8.1</version.maven.project-info-reports>
+		<version.maven.site>3.4</version.maven.site>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>${version.maven.site}</version>
+				<configuration>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+					<locales>${japrost.site.locales}</locales>
+					<stagingDirectory>${japrostSiteStageDirectory}/${japrost.site.path}</stagingDirectory>
+					<stagingSiteURL>${japrostSiteStageURL}/${japrost.site.path}</stagingSiteURL>
+					<stagingRepositoryId>${japrostSiteStageId}</stagingRepositoryId>
+					<topSiteURL>file:/srv/sites/japrost/${japrost.site.path}</topSiteURL>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-descriptor</id>
+						<goals>
+							<goal>attach-descriptor</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh-external</artifactId>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+			</extension>
+		</extensions>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>${version.maven.project-info-reports}</version>
+				<configuration>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependencies</report>
+							<report>dependency-management</report>
+							<report>summary</report>
+							<report>plugins</report>
+							<report>plugin-management</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>de.japrost.maven</groupId>
+				<artifactId>japrost-frontpage-report</artifactId>
+				<version>${version.japrost.frontpage.report}</version>
+				<inherited>false</inherited>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- this is where all the stuff goes to -->
+	<distributionManagement>
+		<site>
+			<id>JaProStDistributionInternal</id>
+			<name>Site</name>
+			<!-- remote site is staged<url>sftp://ssh.strato.de/japrost/</url> -->
+			<url>file:/srv/sites/japrost/${japrost.site.path}</url>
+		</site>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>${japrost.distribution.releases.id}</id>
+			<name>Releases</name>
+			<url>${japrost.distribution.releases.url}</url>
+		</repository>
+		<!-- use the following if you ARE using a snapshot version. -->
+		<snapshotRepository>
+			<id>${japrost.distribution.snapshots.id}</id>
+			<name>Snapshots</name>
+			<url>${japrost.distribution.snapshots.url}</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<!-- this is where all the stuff comes from -->
+	<scm>
+		<connection>scm:hg:http://abba:18080/scm/hg/japrost/japrost-parent</connection>
+		<developerConnection>scm:hg:http://abba:18080/scm/hg/japrost/japrost-parent</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+</project>

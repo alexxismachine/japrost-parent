@@ -1,0 +1,24 @@
+ -----
+ About ...
+ -----
+ alexxismachine
+ -----
+ 2010-05-17
+ -----
+
+Java Programming Studio - Parent
+
+  This is the common base of all JaProSt projects.
+  It contains only descriptions and configurations shared by all development
+  done by JaProSt.
+
+* JaProSt Maven Repository
+
+  The JaProSt artifacts are available at {{{http://www.japrost.de/releases/}releases}} and {{{http://www.japrost.de/snapshots/}snapshots}} 
+  
+* Properties
+
+  The common properties used at JaProSt. All have meaningfull default values that a build without <<<settings.xml>>> is
+  always possible. 
+
+  TBD   

@@ -1,0 +1,20 @@
+ -----
+ Über ...
+ -----
+ alexxismachine
+ -----
+ 2010-02-11
+ -----
+
+Java Programming Studio - Parent
+
+  Dies ist die gemeinsame Basis für alle JaProSt Projekte. 
+  Sie enthält nur Beschreibungen und Konfigurationen, 
+  die für sämtliche Entwicklung bei JaProSt verwendet wird. 
+
+* Properties
+
+  Die allgemeinen bei JaProSt verwendeten Properties. Alle werden mit sinnvollen Werten vorbelegt, so das auch ohne eine <<<settings.xml>>> immer ein 
+  Build möglich ist. 
+
+  TBD

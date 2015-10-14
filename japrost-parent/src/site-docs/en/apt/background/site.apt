@@ -1,0 +1,22 @@
+ -----
+ Site structure
+ -----
+ alexxismachine
+ -----
+ 2013-07-11
+ -----
+
+Site Struktur und Aufbau
+
+  Since all projects inherit from this projects pom.xml and site.xml
+  but this project is not the root of the JaProSt site,
+  this project has a separate pom (site-pom.xml) and the
+  content of this site is taken from <<<src/site-docs>>>.
+  
+Site structure (to be revised)
+
+  The current project site is always from the current SNAPSHOT-version.
+  Only the current project site contains references to the release sites of previous versions.
+  The release sites are stored with their version (SNAPSHOT or RELEASE).
+  The site of a parent project references always the current SNAPSHOT version of the child project.
+  The current project site never contains a version string.
