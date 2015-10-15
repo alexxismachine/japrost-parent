@@ -148,4 +148,5 @@
 		<developerConnection>scm:hg:http://abba:18080/scm/hg/japrost/japrost-parent</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
+	<!-- test git -->
 </project>
