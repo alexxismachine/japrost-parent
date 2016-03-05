@@ -1,96 +1,44 @@
 <project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>de.japrost</groupId>
-		<artifactId>japrost-parent</artifactId>
-		<version>5-SNAPSHOT</version>
-		<relativePath>./pom.xml</relativePath>
-	</parent>
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>de.japrost</groupId>
+    <artifactId>japrost-parent</artifactId>
+    <version>5-SNAPSHOT</version>
+    <relativePath>./pom.xml</relativePath>
+  </parent>
 
-	<artifactId>japrost-parent.</artifactId>
-	<packaging>pom</packaging>
+  <artifactId>japrost-parent.</artifactId>
+  <packaging>pom</packaging>
 
-	<name>JaProSt</name>
-	<description>Java Programming Studio: Site of the parent.</description>
-	<url>${japrostProjectUrl}parent/</url>
+  <name>JaProSt</name>
+  <description>Java Programming Studio: Site of the parent.</description>
+  <url>${japrost.project.url}/${japrost.site.project.path}/</url>
 
-	<properties>
-		<!-- START values to be overwritten -->
-		<japrost.site.path>parent/</japrost.site.path>
-		<!-- END values to be overwritten -->
-		<!-- START fixed values -->
-		<japrostProjectUrl>http://www.japrost.de/</japrostProjectUrl>
-		<japrostOrganizationUrl>http://www.alexxismachine.de/</japrostOrganizationUrl>
+  <properties>
+    <!-- START values to be overwritten in sub-projects -->
+    <japrost.site.project.path>parent</japrost.site.project.path>
+  </properties>
 
-		<!-- plugin versions -->
-		<!-- END fixed values -->
-	</properties>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <siteDirectory>${project.basedir}/src/site-docs</siteDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
+  <distributionManagement>
+    <site>
+      <id>${japrost.distribution.site.id}</id>
+      <name>JaProSt-Site</name>
+      <url>${japrost.distribution.site.url}/${japrost.site.project.path}/</url>
+    </site>
+  </distributionManagement>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>${version.maven.site}</version>
-				<configuration>
-					<inputEncoding>UTF-8</inputEncoding>
-					<outputEncoding>UTF-8</outputEncoding>
-					<locales>de,en</locales>
-					<siteDirectory>${project.basedir}/src/site-docs</siteDirectory>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-	
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>${version.maven.project-info-reports}</version>
-				<configuration>
-					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-				</configuration>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>dependencies</report>
-							<report>summary</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-		</plugins>
-	</reporting>
-
-	<!-- this is where all the stuff goes to -->
-	<distributionManagement>
-		<site>
-			<id>JaProStDistributionInternal</id>
-			<name>Site</name>
-			<!-- remote site is staged<url>sftp://ssh.strato.de/japrost/</url> -->
-			<url>file:/srv/sites/japrost/${japrost.site.path}</url>
-		</site>
-		<!-- use the following if you're not using a snapshot version. -->
-		<repository>
-			<id>${japrost.distribution.releases.id}</id>
-			<name>Releases</name>
-			<url>${japrost.distribution.releases.url}</url>
-		</repository>
-		<!-- use the following if you ARE using a snapshot version. -->
-		<snapshotRepository>
-			<id>${japrost.distribution.snapshots.id}</id>
-			<name>Snapshots</name>
-			<url>${japrost.distribution.snapshots.url}</url>
-		</snapshotRepository>
-	</distributionManagement>
-
-	<!-- this is where all the stuff comes from -->
-	<scm>
-		<connection>scm:hg:http://abba:18080/scm/hg/japrost/japrost-parent</connection>
-		<developerConnection>scm:hg:http://abba:18080/scm/hg/japrost/japrost-parent</developerConnection>
-	</scm>
 </project>

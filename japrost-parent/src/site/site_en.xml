@@ -1,64 +1,36 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project
-	xmlns="http://maven.apache.org/DECORATION/1.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd"
-	name="JaProSt">
-	<version
-		position="bottom" />
-	<publishDate
-		position="right" />
-	<bannerLeft>
-		<name>JaProSt</name>
-		<src>images/JaProSt-logo.gif</src>
-		<href>${japrostProjectUrl}</href>
-	</bannerLeft>
-	<body>
+  xmlns="http://maven.apache.org/DECORATION/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd"
+  name="JaProSt">
+  <!-- parent site.xml -->
 
-		<links>
-			<item
-				name="Maven"
-				href="http://maven.apache.org/" />
-		</links>
+  <version position="bottom" />
+  <publishDate
+    position="right"
+    format="yyyy-MM-dd HH:mm" />
+  <bannerLeft>
+    <name>JaProSt</name>
+    <src>${japrost.project.url}/images/JaProSt-logo.gif</src>
+    <href>${japrost.project.url}</href>
+  </bannerLeft>
 
-		<breadcrumbs>
-			<item
-				name="JaProSt"
-				href="${japrostProjectUrl}" />
-		</breadcrumbs>
+  <body>
+    <!-- Breadcrumbs that every project will inherit -->
+    <breadcrumbs>
+      <item
+        name="JaProSt"
+        href="${japrost.project.url}/index.html" />
+    </breadcrumbs>
 
-		<menu
-			name="Project Layout">
-			<item
-				name="Background"
-				collapse="true"
-				href="background/index.html">
-				<item
-					name="About JaProSt Parent"
-					href="background/about.html" />
-				<item
-					name="Changes"
-					href="background/changes.html" />
-				<item
-					name="Dependencies"
-					href="background/matrix.html" />
-				<item
-					name="Skin"
-					href="../${japrostTopicPathSkin}/en" />
-			</item>
-			<item
-				name="Imprint"
-				href="../imprint.html" />
-		</menu>
-
-		<menu
-			ref="reports"
-			inherit="bottom" />
-
-	</body>
-	<skin>
-		<groupId>de.japrost</groupId>
-		<artifactId>${japrost.site.skin.artifact}</artifactId>
-		<version>${japrost.site.skin.version}</version>
-	</skin>
+    <menu
+      ref="reports"
+      inherit="bottom" />
+  </body>
+  <skin>
+    <groupId>de.japrost</groupId>
+    <artifactId>japrost-skin</artifactId>
+    <version>${japrost.site.skin.version}</version>
+  </skin>
 </project>
