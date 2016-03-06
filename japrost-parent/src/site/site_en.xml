@@ -21,7 +21,7 @@
     <breadcrumbs>
       <item
         name="JaProSt"
-        href="${japrost.project.url}/index.html" />
+        href="${japrost.project.url}/en/index.html" />
     </breadcrumbs>
 
     <menu
