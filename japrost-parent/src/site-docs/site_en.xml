@@ -17,6 +17,11 @@
   </bannerLeft>
 
   <body>
+    <links>
+      <item
+        name="Impressum"
+        href="${japrost.project.url}/imprint.html" />
+    </links>
     <breadcrumbs>
       <item
         name="JaProSt"
@@ -47,9 +52,6 @@
           name="Changes"
           href="changes-report.html" />
       </item>
-      <item
-        name="Imprint"
-        href="../../imprint.html" />
     </menu>
 
     <menu
