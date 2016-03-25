@@ -22,7 +22,7 @@
   <properties>
     <!-- START values to be overwritten in sub-projects -->
     <japrost.site.locales>de,en</japrost.site.locales>
-    <japrost.site.project.path/>
+    <japrost.site.project.path />
     <!-- END values to be overwritten in sub-projects -->
     <!-- START values may be overwritten in profiles -->
     <japrost.distribution.releases.id>japrostLocalReleases</japrost.distribution.releases.id>
@@ -164,6 +164,43 @@
             </reports>
           </reportSet>
         </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <tagListOptions>
+            <tagClasses>
+              <tagClass>
+                <displayName>Todo </displayName>
+                <tags>
+                  <tag>
+                    <matchString>todo</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>fixme</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                </tags>
+              </tagClass>
+              <tagClass>
+                <displayName>Ideas</displayName>
+                <tags>
+                  <tag>
+                    <matchString>maybe</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>future</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                </tags>
+              </tagClass>
+            </tagClasses>
+          </tagListOptions>
+        </configuration>
       </plugin>
     </plugins>
   </reporting>

@@ -13,6 +13,9 @@
       <action type="add">
         Add changes report.
       </action>
+      <action type="add">
+        Add taglist report.
+      </action>
       <action type="update">
         Removed version properties in favor of more reports for the site.
       </action>
