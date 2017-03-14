@@ -17,4 +17,89 @@ Java Programming Studio - Parent
   Die allgemeinen bei JaProSt verwendeten Properties. Alle werden mit sinnvollen Werten vorbelegt, so das auch ohne eine <<<settings.xml>>> immer ein 
   Build möglich ist. 
 
-  TBD
+** Pro Projekt Properties
+
+  Die folgenden Properties werden pro Projekt konfiguriert (in den <properties>) und sind Stage unabhängig.
+  
+*--+--+--+
+|| Property || Beschreibung || Beispiel / Wert ||
+*--+--+--+
+| japrost.scm.artifact | Artefakt-Pfad im scm. | japrost-amaot |
+*--+--+--+
+| japrost.site.locales | Locales der Site  | de, en |
+*--+--+--+
+| japrost.site.project.path | Pfad des Projekts in der Site  | java/amaot |
+*--+--+--+
+
+*** Anmerkungen
+
+  Da die Projekte im SCM und in der Site nicht die Hierarchie der Parent-Child-Beziehungen von maven unterliegen, 
+  müssen die Lage im SCM und in der Site in jedem Projekt angegeben werden.
+  Damit dies wirksam wird, muss auch in jedem Projekt das  entsprechende scm- bzw. distributionManagement-Tag
+  konfiguriert werden.
+
+** Pro Stage Properties
+
+  Die folgenden Properties werden für die unterschiedlichen Stages konfiguriert.
+  Die Stages werden in der Regel über Profile gesteuert.
+  Die local-Stage gibt ein Beispiel für das lokale Entwickeln.
+  Die public-Stage gib die Werte für die öffentlichen (release) Builds wieder.
+  
+*--+--+--+
+|| Property || Beschreibung || Beispiel / Wert ||
+*--+--+--+
+| japrost.distribution.releases.id | Server-ID des Release-Repositories | japrostLocalReleases |
+*--+--+--+
+| japrost.distribution.releases.url | URL des Release-Repositories | file:///tmp/japrost/releases |
+*--+--+--+
+| japrost.distribution.site.id | Server-ID des Site-Servers | japrostLocalSite |
+*--+--+--+
+| japrost.distribution.site.url | URL des Site-Servers | file:///tmp/japrost/site |
+*--+--+--+
+| japrost.distribution.snapshots.id | Server-ID des Snapshot-Repositories | japrostLocalSnapshots |
+*--+--+--+
+| japrost.distribution.snapshots.url | URL des Snapshot-Repositories | file:///tmp/japrost/snapshots |
+*--+--+--+
+| japrost.gpg.keyname | Name des Keys, der zum signieren verwendet wird |  maven@japrost.de |
+*--+--+--+
+| japrost.gpg.passphraseServerId | Server-ID zum ermitteln der Passphrase des Keys |  japrostOpenPGP |
+*--+--+--+
+| japrost.scm.base | Basis-URL des scm | git:git://bitbucket.org/daprost/ |
+*--+--+--+
+| japrost.site.stagingDirectory | Basis-Pfad, der für site:stage verwendet wird. Wird um japrost.site.project.path erweitert | /tmp/japrost/site |   
+*--+--+--+
+| japrost.site.stagingRepositoryId | Server-ID für ein site:stage-deploy | japrostSiteStage |   
+*--+--+--+
+| japrost.site.stagingSiteURL.base | Basis URL für ein site:stage-deploy | file:/srv/sites/japrost/ |   
+*--+--+--+
+| japrost.site.topSiteURL.base | Basis-URL, der für site:deploy verwendet wird. Wird um japrost.site.project.path erweitert | file:/srv/sites/japrost/ |   
+*--+--+--+
+
+** "Unveränderliche" Werte
+
+  Die folgenden Properties werden einmalig in der Parent-Pom gesetzt und an alle Projekte vererbt.
+   
+*--+--+--+
+|| Property || Beschreibung || Beispiel / Wert ||
+*--+--+--+
+| japrost.organization.url | URL der Organisation  | http://www.alexxismachine.de |
+*--+--+--+
+| japrost.project.url | Basis-URL der Site | http://www.japrost.de |
+*--+--+--+
+| japrost.scm.url | Basis-URL des öffentlichen SCM | https://bitbucket.org/daprost |
+*--+--+--+
+| japrost.site.skin.version | Version der skin, die in der Site verwendet wird | 1.0 |
+*--+--+--+
+
+* Settings
+
+** Für "public" builds
+
+  Die <<<japrost.distribution.site.*>>> müssen auf die Art der Veröffentlichung konfiguriert werden.
+  
+** Für release builds
+
+  (nur für releases? nicht besser für alle "public"?)
+  
+  Release-Builds werden signiert. 
+  In den settings muss daher die GPG-Konfiguration eingestellt und aktiviert werden.

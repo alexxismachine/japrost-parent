@@ -1,12 +1,12 @@
 <project
   xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>de.japrost</groupId>
   <artifactId>japrost-parent</artifactId>
-  <version>5-SNAPSHOT</version>
+  <version>5.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>JaProSt</name>
@@ -22,24 +22,13 @@
   <properties>
     <!-- START values to be overwritten in sub-projects -->
     <japrost.site.locales>de,en</japrost.site.locales>
-    <japrost.site.project.path />
+    <japrost.site.project.path>not-the-real-parent-site</japrost.site.project.path>
+    <japrost.scm.artifact>japrost-parent</japrost.scm.artifact>
     <!-- END values to be overwritten in sub-projects -->
-    <!-- START values may be overwritten in profiles -->
-    <japrost.distribution.releases.id>japrostLocalReleases</japrost.distribution.releases.id>
-    <japrost.distribution.releases.url>file:///tmp/japrost/releases</japrost.distribution.releases.url>
-    <japrost.distribution.site.id>japrostLocalSite</japrost.distribution.site.id>
-    <japrost.distribution.site.url>file:/tmp/japrost/site</japrost.distribution.site.url>
-    <japrost.distribution.snapshots.id>japrostLocalSnapshots</japrost.distribution.snapshots.id>
-    <japrost.distribution.snapshots.url>file:///tmp/japrost/snapshots</japrost.distribution.snapshots.url>
-    <!-- <japrost.scm.base>your repo, if you want local releases</japrost.scm.base> -->
-    <japrost.site.stagingDirectory>/tmp/japrost/site</japrost.site.stagingDirectory>
-    <japrost.site.stagingRepositoryId>japrostSiteStage</japrost.site.stagingRepositoryId>
-    <japrost.site.stagingSiteURL.base>file:/srv/sites/japrost/</japrost.site.stagingSiteURL.base>
-    <japrost.site.topSiteURL.base>file:/srv/sites/japrost/</japrost.site.topSiteURL.base>
-    <!-- END values may be overwritten in profiles -->
     <!-- START fixed values -->
     <japrost.organization.url>http://www.alexxismachine.de</japrost.organization.url>
     <japrost.project.url>http://www.japrost.de</japrost.project.url>
+    <japrost.scm.url>https://bitbucket.org/daprost</japrost.scm.url>
     <japrost.site.skin.version>1-SNAPSHOT</japrost.site.skin.version>
     <!-- END fixed values -->
   </properties>
@@ -84,7 +73,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.4</version>
+        <version>3.6</version>
         <configuration>
           <inputEncoding>UTF-8</inputEncoding>
           <outputEncoding>UTF-8</outputEncoding>
@@ -104,17 +93,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>wagon-maven-plugin</artifactId>
-        <version>1.0</version>
-        <configuration>
-          <source>${japrost.distribution.merge-releases.source.url}</source>
-          <sourceId>${japrost.distribution.merge-releases.source.id}</sourceId>
-          <target>${japrost.distribution.releases.url}</target>
-          <targetId>${japrost.distribution.releases.id}</targetId>
-        </configuration>
       </plugin>
     </plugins>
     <extensions>
@@ -224,7 +202,99 @@
   </distributionManagement>
 
   <scm>
-    <developerConnection>scm:${japrost.scm.base}/${project.artifactId}</developerConnection>
+    <developerConnection>scm:${japrost.scm.base}/${japrost.scm.artifact}</developerConnection>
+    <url>${japrost.scm.url}/${japrost.scm.artifact}</url>
     <tag>HEAD</tag>
   </scm>
+
+  <developers>
+    <developer>
+      <id>alexxismachine</id>
+      <name>Ulrich David</name>
+      <email>alexxismachine@alexxismachine.de</email>
+      <organization>Davids Programmier Studio</organization>
+      <organizationUrl>http://www.daprost.de/</organizationUrl>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>GNU General Public License, Version 3</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <profiles>
+    <profile>
+      <id>local</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <japrost.distribution.releases.id>japrostLocalReleases</japrost.distribution.releases.id>
+        <japrost.distribution.releases.url>file:///tmp/japrost/releases</japrost.distribution.releases.url>
+        <japrost.distribution.site.id>japrostLocalSite</japrost.distribution.site.id>
+        <japrost.distribution.site.url>file:/tmp/japrost/site</japrost.distribution.site.url>
+        <japrost.distribution.snapshots.id>japrostLocalSnapshots</japrost.distribution.snapshots.id>
+        <japrost.distribution.snapshots.url>file:///tmp/japrost/snapshots</japrost.distribution.snapshots.url>
+        <!-- <japrost.scm.base>your repo, if you want local releases</japrost.scm.base> -->
+        <japrost.site.stagingDirectory>/tmp/japrost/site</japrost.site.stagingDirectory>
+        <japrost.site.stagingRepositoryId>japrostSiteStage</japrost.site.stagingRepositoryId>
+        <japrost.site.stagingSiteURL.base>file:/srv/sites/japrost/</japrost.site.stagingSiteURL.base>
+        <japrost.site.topSiteURL.base>file:/srv/sites/japrost/</japrost.site.topSiteURL.base>
+      </properties>
+    </profile>
+    <profile>
+      <id>public</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <japrost.distribution.releases.id>japrostPublicReleases</japrost.distribution.releases.id>
+        <japrost.distribution.releases.url>https://oss.sonatype.org/service/local/staging/deploy/maven2</japrost.distribution.releases.url>
+        <!-- <japrost.distribution.site.id>see settings</japrost.distribution.site.id> -->
+        <!-- <japrost.distribution.site.url>see settings</japrost.distribution.site.url> -->
+        <japrost.distribution.snapshots.id>japrostPublicSnapshots</japrost.distribution.snapshots.id>
+        <japrost.distribution.snapshots.url>https://oss.sonatype.org/content/repositories/snapshots</japrost.distribution.snapshots.url>
+        <japrost.gpg.keyname>maven@japrost.de</japrost.gpg.keyname>
+        <japrost.gpg.passphraseServerId>japrostOpenPGP</japrost.gpg.passphraseServerId>
+        <japrost.scm.base>git:git://bitbucket.org/daprost/</japrost.scm.base>
+        <!-- <japrost.site.stagingDirectory>no public staging</japrost.site.stagingDirectory> -->
+        <!-- <japrost.site.stagingRepositoryId>no public staging</japrost.site.stagingRepositoryId> -->
+        <!-- <japrost.site.stagingSiteURL.base>no public staging</japrost.site.stagingSiteURL.base> -->
+        <!-- <japrost.site.topSiteURL.base>no public staging</japrost.site.topSiteURL.base> -->
+      </properties>
+    </profile>
+    <profile>
+      <id>onRelease</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <configuration>
+                  <keyname>${japrost.gpg.keyname}</keyname>
+                  <passphraseServerId>${japrost.gpg.passphraseServerId}</passphraseServerId>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

@@ -4,9 +4,12 @@
   xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
   <body>
     <release
-      version="5"
+      version="5.0"
       description="pom and reports"
-      date="to be released">
+      date="2017-03-20">
+      <action type="add">
+        Add and update towards maven central.
+      </action>
       <action type="update">
         Update plugin and plugin management versions.
       </action>

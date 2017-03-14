@@ -1,0 +1,85 @@
+ -----
+ Build
+ -----
+ alexxismachine
+ -----
+ 2017-03-14
+ -----
+ 
+Build
+ 
+  Diese Seite beschreibt den Build und das Ausbringen der Artefakte. 
+
+* Build-Stages
+
+  Für den Build gibt es drei Stages: "local", "internal" und "public".
+  Die Stages dienen unterschiedlichen Zwecken. 
+  Sie sind in der parent-pom weitgehend vorkonfiguriert.
+ 
+** Entwickler-Build "local"
+
+  Der Entwickler-Build ist für den einfachen Build durch Entwickler gedacht.
+  Alle Artefakte können in temporäre Verzeichnisse gebaut und deployed werden.
+  Dort können sie geprüft werden.
+  
+  Der Entwickler-Build hat das lokale git als scm und ist das Ziel von commits.
+ 
+** Interner-Build "internal"
+
+  Der interne Build ist für das Vorbereiten der Veröffenlichung bestimmt. 
+  Hier wird alles so weit geprüft, dass einer Veröffenltichung nichts im Wege steht. 
+  In dieser Stage werden die eigentlichen Releases erstellt.
+  Die Konfiguration der intenen Builds befindet sich überwiegend settings.
+  
+  Der Interne Build hat ein internes git als scm. 
+  Hierher wird aus dem Entwickler-Build gepushed.
+ 
+** Öffentlicher-Build "public"
+
+  Der öffentliche Build ist für das Ausbringen der Artefakte in die Öffenlichkeit bestimmt.
+  Die Artefakte werden hochgeladen und die Site deployed.
+  Diese Stage ist weitgehend in der parent-pom, mit den öffenlichen Koordinaten konfiguriert.
+  
+  Der public Build hat das öffenliche git als scm. 
+  Dieses wird aus dem internen scm synchronisiert. 
+  
+* Build-Schritte
+
+  Die Weiterentwicklung der Projekte findet in den im folgenden beschriebenen Schritten statt.
+  
+  Artefakte werden auf allen Stages über ein übliches <<<clean deploy>>> erstellt,
+  mit dem Profil der jeweiligen Stage aktiviert.
+
+  Die Site wird in den Stages unterschiedlich ausgebracht.
+  Es muss zusätzlich zwischen "normalen" Projekten und dem parent-Projekt unterschieden werden,
+  da das parent-Projekt eine separate Site hat. 
+  Daher werden die Builds der parent-Site mit <<<-f site-pom.xml>>> gestartet.
+  
+** Lokale Entwicklung ("local")
+
+  Entwickeln und lokales einchecken.
+  Die Site wird lokal über <<<post-site site:stage>>> erstellt.
+
+** SNAPSHOT-Veröffenlichung ("public")
+
+  Pushen in das öffenliche SCM. Deployen der SNAPSHOT Artefakte und Site.
+  Die Site wird über <<<site-deploy>>> erstellt.
+  
+** Release-Veröffentlichung  ("internal", dann "public")
+
+  Bauen und veröffentlichen der Release-Artefakte und -Site (über internen build)
+  
+  * internal release build
+  
+  * release tag auschecken
+  
+  * public build (? ohne site?)
+  
+  * close and release auf OSS
+  
+  * warten auf öffenliche Verfügbarkeit
+  
+  * "next SNAPSHOT" auschecken (lokal updaten)
+  
+  * push nach public scm
+  
