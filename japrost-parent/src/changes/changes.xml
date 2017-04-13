@@ -4,6 +4,14 @@
   xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
   <body>
     <release
+      version="5.1"
+      description="pom and reports"
+      date="2017-04-13">
+      <action type="update">
+        Go back to site plugin 3.4 since 3.6 causes failures.
+      </action>
+    </release>
+    <release
       version="5.0"
       description="pom and reports"
       date="2017-03-20">

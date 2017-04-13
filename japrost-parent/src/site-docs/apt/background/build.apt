@@ -69,6 +69,8 @@ Build
 
   Bauen und veröffentlichen der Release-Artefakte und -Site (über internen build)
   
+  * changes anpassen und integrieren
+  
   * internal release build
   
   * release tag auschecken
