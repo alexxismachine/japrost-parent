@@ -3,7 +3,7 @@
 
   <groupId>de.japrost</groupId>
   <artifactId>japrost-parent</artifactId>
-  <version>5.1</version>
+  <version>5.2-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>JaProSt</name>
@@ -201,7 +201,7 @@
   <scm>
     <developerConnection>scm:${japrost.scm.base}/${japrost.scm.artifact}</developerConnection>
     <url>${japrost.scm.url}/${japrost.scm.artifact}</url>
-    <tag>japrost-parent-5.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <developers>
