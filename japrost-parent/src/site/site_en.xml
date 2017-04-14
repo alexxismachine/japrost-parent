@@ -12,21 +12,21 @@
     format="yyyy-MM-dd HH:mm" />
   <bannerLeft>
     <name>JaProSt</name>
-    <src>${japrost.project.url}/images/JaProSt-logo.gif</src>
-    <href>${japrost.project.url}</href>
+    <src>http://www.japrost.de/images/JaProSt-logo.gif</src>
+    <href>http://www.japrost.de</href>
   </bannerLeft>
 
   <body>
     <links>
       <item
         name="Imprint"
-        href="${japrost.project.url}/imprint.html" />
+        href="http://www.japrost.de/imprint.html" />
     </links>
     <!-- Breadcrumbs that every project will inherit -->
     <breadcrumbs>
       <item
         name="JaProSt"
-        href="${japrost.project.url}/en/index.html" />
+        href="http://www.japrost.de/en/index.html" />
     </breadcrumbs>
 
     <menu

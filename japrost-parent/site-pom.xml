@@ -6,7 +6,7 @@
   <parent>
     <groupId>de.japrost</groupId>
     <artifactId>japrost-parent</artifactId>
-    <version>5.0-SNAPSHOT</version>
+    <version>5.2-SNAPSHOT</version>
     <relativePath>./pom.xml</relativePath>
   </parent>
 
@@ -15,12 +15,7 @@
 
   <name>JaProSt</name>
   <description>Java Programming Studio: Site of the parent.</description>
-  <url>${japrost.project.url}/${japrost.site.project.path}/</url>
-
-  <properties>
-    <!-- START values to be overwritten in sub-projects -->
-    <japrost.site.project.path>parent</japrost.site.project.path>
-  </properties>
+  <url>http://www.japrost.de/parent/</url>
 
   <build>
     <plugins>
@@ -35,9 +30,9 @@
 
   <distributionManagement>
     <site>
-      <id>${japrost.distribution.site.id}</id>
+      <id>japrostSiteId</id>
       <name>JaProSt-Site</name>
-      <url>${japrost.distribution.site.url}/${japrost.site.project.path}/</url>
+      <url>${japrost.distribution.site.url}/parent/</url>
     </site>
   </distributionManagement>
 

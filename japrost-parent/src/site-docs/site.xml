@@ -13,19 +13,19 @@
   <bannerLeft>
     <name>JaProSt</name>
     <src>images/JaProSt-logo.gif</src>
-    <href>${japrost.project.url}</href>
+    <href>http://www.japrost.de</href>
   </bannerLeft>
 
   <body>
     <links>
       <item
         name="Impressum"
-        href="${japrost.project.url}/imprint.html" />
+        href="http://www.japrost.de/imprint.html" />
     </links>
     <breadcrumbs>
       <item
         name="JaProSt"
-        href="${japrost.project.url}/index.html" />
+        href="http://www.japrost.de/index.html" />
       <item
         name="parent"
         href="index.html" />

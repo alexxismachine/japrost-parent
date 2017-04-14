@@ -8,26 +8,17 @@
 
   <name>JaProSt</name>
   <description>Java Programming Studio</description>
-  <url>${japrost.project.url}/${japrost.site.project.path}/</url>
+  <url>http://www.japrost.de/parent-site/</url>
 
   <organization>
     <name>JaProSt (Ulrich David)</name>
-    <url>${japrost.organization.url}/</url>
+    <url>http://www.alexxismachine.de/</url>
   </organization>
   <inceptionYear>2009</inceptionYear>
 
   <properties>
-    <!-- START values to be overwritten in sub-projects -->
     <japrost.site.locales>de,en</japrost.site.locales>
-    <japrost.site.project.path>not-the-real-parent-site</japrost.site.project.path>
-    <japrost.scm.artifact>japrost-parent</japrost.scm.artifact>
-    <!-- END values to be overwritten in sub-projects -->
-    <!-- START fixed values -->
-    <japrost.organization.url>http://www.alexxismachine.de</japrost.organization.url>
-    <japrost.project.url>http://www.japrost.de</japrost.project.url>
-    <japrost.scm.url>https://bitbucket.org/daprost</japrost.scm.url>
     <japrost.site.skin.version>1-SNAPSHOT</japrost.site.skin.version>
-    <!-- END fixed values -->
   </properties>
 
   <build>
@@ -70,17 +61,11 @@
       </plugin>
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.4</version>
+        <version>3.6</version>
         <configuration>
           <inputEncoding>UTF-8</inputEncoding>
           <outputEncoding>UTF-8</outputEncoding>
           <locales>${japrost.site.locales}</locales>
-          <!-- site:stage -->
-          <stagingDirectory>${japrost.site.stagingDirectory}/${japrost.site.project.path}</stagingDirectory>
-          <!-- site:stage-deploy -->
-          <stagingSiteURL>${japrost.site.stagingSiteURL.base}</stagingSiteURL>
-          <stagingRepositoryId>${japrost.site.stagingRepositoryId}</stagingRepositoryId>
-          <topSiteURL>${japrost.site.topSiteURL.base}/${japrost.site.project.path}</topSiteURL>
         </configuration>
         <executions>
           <execution>
@@ -182,25 +167,25 @@
 
   <distributionManagement>
     <site>
-      <id>${japrost.distribution.site.id}</id>
+      <id>japrostSiteId</id>
       <name>JaProSt-Site</name>
-      <url>${japrost.distribution.site.url}/${japrost.site.project.path}/</url>
+      <url>${japrost.distribution.site.url}/parent-site/</url>
     </site>
     <repository>
-      <id>${japrost.distribution.releases.id}</id>
+      <id>japrostReleasesId</id>
       <name>JaProSt-Releases</name>
-      <url>${japrost.distribution.releases.url}</url>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
     </repository>
     <snapshotRepository>
-      <id>${japrost.distribution.snapshots.id}</id>
+      <id>japrostSnapshotsId</id>
       <name>JaProSt-Snapshots</name>
-      <url>${japrost.distribution.snapshots.url}</url>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
 
   <scm>
-    <developerConnection>scm:${japrost.scm.base}/${japrost.scm.artifact}</developerConnection>
-    <url>${japrost.scm.url}/${japrost.scm.artifact}</url>
+    <developerConnection>scm:git:git://bitbucket.org/daprost/japrost-parent</developerConnection>
+    <url>https://bitbucket.org/daprost/japrost-parent</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -229,42 +214,11 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <japrost.distribution.releases.id>japrostLocalReleases</japrost.distribution.releases.id>
-        <japrost.distribution.releases.url>file:///tmp/japrost/releases</japrost.distribution.releases.url>
-        <japrost.distribution.site.id>japrostLocalSite</japrost.distribution.site.id>
-        <japrost.distribution.site.url>file:/tmp/japrost/site</japrost.distribution.site.url>
-        <japrost.distribution.snapshots.id>japrostLocalSnapshots</japrost.distribution.snapshots.id>
-        <japrost.distribution.snapshots.url>file:///tmp/japrost/snapshots</japrost.distribution.snapshots.url>
-        <!-- <japrost.scm.base>your repo, if you want local releases</japrost.scm.base> -->
-        <japrost.site.stagingDirectory>/tmp/japrost/site</japrost.site.stagingDirectory>
-        <japrost.site.stagingRepositoryId>japrostSiteStage</japrost.site.stagingRepositoryId>
-        <japrost.site.stagingSiteURL.base>file:/srv/sites/japrost/</japrost.site.stagingSiteURL.base>
-        <japrost.site.topSiteURL.base>file:/srv/sites/japrost/</japrost.site.topSiteURL.base>
+        <japrost.distribution.site.url>http://www.japrost.de</japrost.distribution.site.url>
       </properties>
     </profile>
     <profile>
-      <id>public</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <properties>
-        <japrost.distribution.releases.id>japrostPublicReleases</japrost.distribution.releases.id>
-        <japrost.distribution.releases.url>https://oss.sonatype.org/service/local/staging/deploy/maven2</japrost.distribution.releases.url>
-        <!-- <japrost.distribution.site.id>see settings</japrost.distribution.site.id> -->
-        <!-- <japrost.distribution.site.url>see settings</japrost.distribution.site.url> -->
-        <japrost.distribution.snapshots.id>japrostPublicSnapshots</japrost.distribution.snapshots.id>
-        <japrost.distribution.snapshots.url>https://oss.sonatype.org/content/repositories/snapshots</japrost.distribution.snapshots.url>
-        <japrost.gpg.keyname>maven@japrost.de</japrost.gpg.keyname>
-        <japrost.gpg.passphraseServerId>japrostOpenPGP</japrost.gpg.passphraseServerId>
-        <japrost.scm.base>git:git://bitbucket.org/daprost/</japrost.scm.base>
-        <!-- <japrost.site.stagingDirectory>no public staging</japrost.site.stagingDirectory> -->
-        <!-- <japrost.site.stagingRepositoryId>no public staging</japrost.site.stagingRepositoryId> -->
-        <!-- <japrost.site.stagingSiteURL.base>no public staging</japrost.site.stagingSiteURL.base> -->
-        <!-- <japrost.site.topSiteURL.base>no public staging</japrost.site.topSiteURL.base> -->
-      </properties>
-    </profile>
-    <profile>
-      <id>onRelease</id>
+      <id>signArtifacts</id>
       <activation>
         <property>
           <name>performRelease</name>
@@ -284,8 +238,8 @@
                   <goal>sign</goal>
                 </goals>
                 <configuration>
-                  <keyname>${japrost.gpg.keyname}</keyname>
-                  <passphraseServerId>${japrost.gpg.passphraseServerId}</passphraseServerId>
+                  <keyname>maven@japrost.de</keyname>
+                  <passphraseServerId>japrostOpenPGP</passphraseServerId>
                 </configuration>
               </execution>
             </executions>
