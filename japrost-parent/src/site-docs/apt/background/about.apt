@@ -24,11 +24,7 @@ Java Programming Studio - Parent
 *--+--+--+
 || Property || Beschreibung || Beispiel / Wert ||
 *--+--+--+
-| japrost.scm.artifact | Artefakt-Pfad im scm. | japrost-amaot |
-*--+--+--+
 | japrost.site.locales | Locales der Site  | de, en |
-*--+--+--+
-| japrost.site.project.path | Pfad des Projekts in der Site  | java/amaot |
 *--+--+--+
 
 *** Anmerkungen
@@ -48,31 +44,7 @@ Java Programming Studio - Parent
 *--+--+--+
 || Property || Beschreibung || Beispiel / Wert ||
 *--+--+--+
-| japrost.distribution.releases.id | Server-ID des Release-Repositories | japrostLocalReleases |
-*--+--+--+
-| japrost.distribution.releases.url | URL des Release-Repositories | file:///tmp/japrost/releases |
-*--+--+--+
-| japrost.distribution.site.id | Server-ID des Site-Servers | japrostLocalSite |
-*--+--+--+
-| japrost.distribution.site.url | URL des Site-Servers | file:///tmp/japrost/site |
-*--+--+--+
-| japrost.distribution.snapshots.id | Server-ID des Snapshot-Repositories | japrostLocalSnapshots |
-*--+--+--+
-| japrost.distribution.snapshots.url | URL des Snapshot-Repositories | file:///tmp/japrost/snapshots |
-*--+--+--+
-| japrost.gpg.keyname | Name des Keys, der zum signieren verwendet wird |  maven@japrost.de |
-*--+--+--+
-| japrost.gpg.passphraseServerId | Server-ID zum ermitteln der Passphrase des Keys |  japrostOpenPGP |
-*--+--+--+
-| japrost.scm.base | Basis-URL des scm | git:git://bitbucket.org/daprost/ |
-*--+--+--+
-| japrost.site.stagingDirectory | Basis-Pfad, der für site:stage verwendet wird. Wird um japrost.site.project.path erweitert | /tmp/japrost/site |   
-*--+--+--+
-| japrost.site.stagingRepositoryId | Server-ID für ein site:stage-deploy | japrostSiteStage |   
-*--+--+--+
-| japrost.site.stagingSiteURL.base | Basis URL für ein site:stage-deploy | file:/srv/sites/japrost/ |   
-*--+--+--+
-| japrost.site.topSiteURL.base | Basis-URL, der für site:deploy verwendet wird. Wird um japrost.site.project.path erweitert | file:/srv/sites/japrost/ |   
+| japrost.distribution.site.url | URL des Servers zum ausbringen der Site| http://www.japrost.de |
 *--+--+--+
 
 ** "Unveränderliche" Werte
@@ -82,24 +54,18 @@ Java Programming Studio - Parent
 *--+--+--+
 || Property || Beschreibung || Beispiel / Wert ||
 *--+--+--+
-| japrost.organization.url | URL der Organisation  | http://www.alexxismachine.de |
-*--+--+--+
-| japrost.project.url | Basis-URL der Site | http://www.japrost.de |
-*--+--+--+
-| japrost.scm.url | Basis-URL des öffentlichen SCM | https://bitbucket.org/daprost |
-*--+--+--+
 | japrost.site.skin.version | Version der skin, die in der Site verwendet wird | 1.0 |
 *--+--+--+
 
 * Settings
 
-** Für "public" builds
+** Distribution management
 
-  Die <<<japrost.distribution.site.*>>> müssen auf die Art der Veröffentlichung konfiguriert werden.
-  
+  Für das distribution management sind die drei Server <japrostSiteId>, <japrostReleasesId> und <japrostSnapshotsId> definiert.
+  Diese müssen für ein Ausbringen der Artefakte mit entsprchenden <username> und <password> konfiguriert werden.
+
 ** Für release builds
 
-  (nur für releases? nicht besser für alle "public"?)
-  
   Release-Builds werden signiert. 
   In den settings muss daher die GPG-Konfiguration eingestellt und aktiviert werden.
+  Als Serverid wird hier <japrostOpenPGP> verwendet.

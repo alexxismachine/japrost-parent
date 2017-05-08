@@ -21,20 +21,53 @@ Build
   Der Entwickler-Build ist für den einfachen Build durch Entwickler gedacht.
   Alle Artefakte können in temporäre Verzeichnisse gebaut und deployed werden.
   Dort können sie geprüft werden.
+  Es finden nur SNAPSHOT- und keine Release-Builds statt.
   
   Der Entwickler-Build hat das lokale git als scm und ist das Ziel von commits.
+  
+*** Erstellen der Artefakte
+
+  Typischerweise werden bei der Entwicklung mit einem <clean install> die Artefakte lokal installiert.
+  Ein <deploy> obliegt der "public"-Stage.
+  
+*** Erstellen der Site
+
+  Zum Testen der zusammenhängenden Site aller Projekte empfiehlt es sich,
+  diese an eine gemeinsame Stelle zu "stagen".
+  
+  Hierfür muss über z.B. <-DstagingDirectory=/tmp/japrost/site/> die gemeinsame Ausgabe gewählt werden 
+  und über <-DtopSiteURL=http://www.japrost.de/> das relativieren der Links einheitlich erstellt werden.
+  
+  Nicht zu vergessen, dass für die Site des Parent-Projekts über <-f site-pom.xml> die pom für die Site ausgewählt werden muss
+  und ein erstellen der "zu vererbenden" Site nicht notwendig ist.
  
-** Interner-Build "internal"
+** TBC Interner-Build "internal"
 
   Der interne Build ist für das Vorbereiten der Veröffenlichung bestimmt. 
-  Hier wird alles so weit geprüft, dass einer Veröffenltichung nichts im Wege steht. 
+  Hier wird alles so weit geprüft, dass einer Veröffentlichung nichts im Wege steht. 
   In dieser Stage werden die eigentlichen Releases erstellt.
   Die Konfiguration der intenen Builds befindet sich überwiegend settings.
   
   Der Interne Build hat ein internes git als scm. 
   Hierher wird aus dem Entwickler-Build gepushed.
  
-** Öffentlicher-Build "public"
+** Öffentlicher-SNAPSHOT-Build "public"
+
+  Der öffentliche-SNAPSHOT-Build ist zum Veröffenlichen der SNAPSHOT-Artefakte und 
+  der aktuellen Site bestimmt.
+  
+*** Veröffentlichen der SNAPSHOT-Artefakte
+
+  Über ein <clean deploy> können die SNAPSHOT-Artefakte veröffentlicht werden,
+  sofern der der Server <japrostSnapshotsId> in den settings konfiguriert ist.
+
+*** Veröffentlichen der SNAPSHOT-Site
+
+  Zum Veröffentlichen der SNAPSHOT-Site über ein <site-deploy> muss in den settings sowohl
+  der Server <japrostSiteId> als auch die <japrost.distribution.site.url> korrekt konfiguriert sein.
+  Für letzteres bietet es sich an ein immer aktives Profile <japrostSite> in den settings anzulegen.
+
+** TBD
 
   Der öffentliche Build ist für das Ausbringen der Artefakte in die Öffenlichkeit bestimmt.
   Die Artefakte werden hochgeladen und die Site deployed.
