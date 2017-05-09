@@ -4,6 +4,17 @@
   xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
   <body>
     <release
+      version="5.2"
+      description="less maven properties"
+      date="2017-05-09">
+      <action type="update">
+        Rework pom to use less maven properties
+      </action>
+      <action type="update">
+        Remove eclipse artifacts from scm 
+      </action>
+    </release>
+    <release
       version="5.1"
       description="pom and reports"
       date="2017-04-13">
