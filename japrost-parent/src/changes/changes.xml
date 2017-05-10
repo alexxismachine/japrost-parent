@@ -6,7 +6,7 @@
     <release
       version="5.2"
       description="less maven properties"
-      date="2017-05-09">
+      date="2017-05-10">
       <action type="update">
         Rework pom to use less maven properties
       </action>
