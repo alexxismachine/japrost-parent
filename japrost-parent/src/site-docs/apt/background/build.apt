@@ -90,12 +90,12 @@ Build
 * Checklist Release
 
   Bauen und veröffentlichen der Release-Artefakte. 
-  Für synchrone Releases können die Schritte auch für die Projekthierarchie parallel ausgeführt werden
-  (also erst bei allen die changes anpassen, dann alle Release-Artefakte erstellen, ...)
+  Für "synchrone" Releases können die Schritte auch für die Projekthierarchie parallel ausgeführt werden
+  (also erst bei allen die changes anpassen, dann alle Release-Artefakte erstellen, ...).
   Dies erlaubt es, sicherzustellen, dass keine Versionen "verbrannt" werden, 
   da bis zu den Aktionen auf OSS alles zurückgedreht werden kann. 
   
-  * changes.xml anpassen und integrieren
+  * changes (und ggfs. pom) anpassen und integrieren
   
   * Releases "internal": Erstellen der Release-Artefakte
   
@@ -110,4 +110,6 @@ Build
   * push nach internal scm
   
   * push nach public scm
+  
+  * changes anpassen und integrieren
   
