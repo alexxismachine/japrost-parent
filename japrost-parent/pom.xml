@@ -3,7 +3,7 @@
 
   <groupId>de.japrost</groupId>
   <artifactId>japrost-parent</artifactId>
-  <version>5.2-SNAPSHOT</version>
+  <version>5.2</version>
   <packaging>pom</packaging>
 
   <name>JaProSt</name>
@@ -186,7 +186,7 @@
   <scm>
     <developerConnection>scm:git:git://bitbucket.org/daprost/japrost-parent</developerConnection>
     <url>https://bitbucket.org/daprost/japrost-parent</url>
-    <tag>HEAD</tag>
+    <tag>japrost-parent-5.2</tag>
   </scm>
 
   <developers>
