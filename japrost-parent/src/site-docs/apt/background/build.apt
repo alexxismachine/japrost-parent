@@ -86,6 +86,8 @@ Build
   und darauf ein <clean deploy> ausgeführt werden. 
   Dabei muss das Profil <sign-artifacts> aktiv sein, um die Artefakte mit gpg zu signieren.
   Die Server <japrostOpenPGP> und <japrostReleasesId> müssen in den settings konfiguriert sein.
+  Für Java-Projekte muss das Profil <javadocNsources> aus der java-parent-pom aktiviert sein,
+  um das JavaDoc und die Sourcen mit zu veröffentlichen.
   
 * Checklist Release
 
