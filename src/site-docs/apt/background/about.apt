@@ -14,18 +14,20 @@ Java Programming Studio - Parent
 
 * Properties
 
-  Die allgemeinen bei JaProSt verwendeten Properties. Alle werden mit sinnvollen Werten vorbelegt, so das auch ohne eine <<<settings.xml>>> immer ein 
-  Build möglich ist. 
+  Die allgemeinen bei JaProSt verwendeten Properties.
+  Alle werden mit sinnvollen Werten vorbelegt, so das auch ohne eine <<<settings.xml>>> immer ein Entwickler-Build möglich ist. 
 
 ** Pro Projekt Properties
 
   Die folgenden Properties werden pro Projekt konfiguriert (in den <properties>) und sind Stage unabhängig.
   
-*--+--+--+
-|| Property || Beschreibung || Beispiel / Wert ||
-*--+--+--+
-| japrost.site.locales | Locales der Site  | de, en |
-*--+--+--+
+*--+--+--+--+
+|| Property || Beschreibung || Verwendung || Beispiel / Wert ||
+*--+--+--+--+
+| japrost.site.locales | Locales der Site des Projekts| maven-site-plugin  | de, en |
+*--+--+--+--+
+| japrost.distribution.site.url | URL des Servers zum ausbringen der Site | distributionManagement/site/url | http://www.japrost.de |
+*--+--+--+--+
 
 *** Anmerkungen
 
@@ -34,27 +36,14 @@ Java Programming Studio - Parent
   Damit dies wirksam wird, muss auch in jedem Projekt das  entsprechende scm- bzw. distributionManagement-Tag
   konfiguriert werden.
 
-** Pro Stage Properties
-
-  Die folgenden Properties werden für die unterschiedlichen Stages konfiguriert.
-  Die Stages werden in der Regel über Profile gesteuert.
-  Die local-Stage gibt ein Beispiel für das lokale Entwickeln.
-  Die public-Stage gib die Werte für die öffentlichen (release) Builds wieder.
-  
-*--+--+--+
-|| Property || Beschreibung || Beispiel / Wert ||
-*--+--+--+
-| japrost.distribution.site.url | URL des Servers zum ausbringen der Site| http://www.japrost.de |
-*--+--+--+
-
 ** "Unveränderliche" Werte
 
   Die folgenden Properties werden einmalig in der Parent-Pom gesetzt und an alle Projekte vererbt.
    
 *--+--+--+
-|| Property || Beschreibung || Beispiel / Wert ||
+|| Property || Beschreibung || Verwendung || Beispiel / Wert ||
 *--+--+--+
-| japrost.site.skin.version | Version der skin, die in der Site verwendet wird | 1.0 |
+| japrost.site.skin.version | Version der skin, die in der Site verwendet wird | site.xml | 1.0 |
 *--+--+--+
 
 * Settings
