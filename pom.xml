@@ -18,7 +18,7 @@
 
   <properties>
     <japrost.site.locales>de,en</japrost.site.locales>
-    <japrost.site.skin.version>1-SNAPSHOT</japrost.site.skin.version>
+    <japrost.site.skin.version>1</japrost.site.skin.version>
   </properties>
 
   <build>
