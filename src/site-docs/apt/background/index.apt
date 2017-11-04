@@ -15,7 +15,5 @@ Hintergründe
 *--+--+
  {{{./about.html}Über ...}} | Informationen zum Maven-Setup und Konfiguration |
 *--+--+
- {{{../background/build.html}Build}} | Informationen wie die Projekte gebaut werden |
-*--+--+
  {{{./site.html}Site}} | Aufbau der Site |
 *--+--+
