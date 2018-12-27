@@ -4,6 +4,17 @@
   xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
   <body>
     <release
+      version="5.3"
+      description="less maven properties"
+      date="2018-12-28">
+      <action type="update">
+        Rework pom to use more version properties. Upgrade to current plugin versions.
+      </action>
+      <action type="add">
+        Datenschutzerklärung
+      </action>
+    </release>
+    <release
       version="5.2"
       description="less maven properties"
       date="2017-05-10">
@@ -11,7 +22,7 @@
         Rework pom to use less maven properties
       </action>
       <action type="update">
-        Remove eclipse artifacts from scm 
+        Remove eclipse artifacts from scm
       </action>
     </release>
     <release

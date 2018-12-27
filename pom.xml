@@ -23,12 +23,13 @@
     <japrost.site.locales>de,en</japrost.site.locales>
     <japrost.site.skin.version>1</japrost.site.skin.version>
     <!-- plugin (management) versions -->
-    <version.></version.>
+    <!--<version.></version.>-->
     <version.maven-antrun-plugin>1.8</version.maven-antrun-plugin>
     <version.maven-assembly-plugin>3.1.0</version.maven-assembly-plugin>
     <version.maven-clean-plugin>3.1.0</version.maven-clean-plugin>
     <version.maven-dependency-plugin>3.1.1</version.maven-dependency-plugin>
     <version.maven-deploy-plugin>2.8.2</version.maven-deploy-plugin>
+    <version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
     <version.maven-install-plugin>2.5.2</version.maven-install-plugin>
     <version.maven-release-plugin>2.5.3</version.maven-release-plugin>
     <version.maven-site-plugin>3.7.1</version.maven-site-plugin>
@@ -108,9 +109,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>${version.maven-project-info-reports-plugin}</version>
-        <configuration>
-          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-        </configuration>
         <reportSets>
           <reportSet>
             <reports>
@@ -241,6 +239,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
+            <version>${version.maven-gpg-plugin}</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -251,6 +250,10 @@
                 <configuration>
                   <keyname>maven@japrost.de</keyname>
                   <passphraseServerId>japrostOpenPGP</passphraseServerId>
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
                 </configuration>
               </execution>
             </executions>
