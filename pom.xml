@@ -1,4 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>de.japrost</groupId>
@@ -20,23 +23,32 @@
     <japrost.site.locales>de,en</japrost.site.locales>
     <japrost.site.skin.version>1</japrost.site.skin.version>
     <!-- plugin (management) versions -->
-    <!--<version.></version.>-->
+    <!--<version.></version.> -->
+    <version.asciidoctor-maven-plugin>1.5.6</version.asciidoctor-maven-plugin>
     <version.maven-antrun-plugin>1.8</version.maven-antrun-plugin>
-    <version.maven-assembly-plugin>3.1.0</version.maven-assembly-plugin>
+    <version.maven-assembly-plugin>3.1.1</version.maven-assembly-plugin>
     <version.maven-clean-plugin>3.1.0</version.maven-clean-plugin>
     <version.maven-dependency-plugin>3.1.1</version.maven-dependency-plugin>
     <version.maven-deploy-plugin>2.8.2</version.maven-deploy-plugin>
     <version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
     <version.maven-install-plugin>2.5.2</version.maven-install-plugin>
+    <version.maven-jar-plugin>3.1.2</version.maven-jar-plugin>
     <version.maven-release-plugin>2.5.3</version.maven-release-plugin>
-    <version.maven-site-plugin>3.7.1</version.maven-site-plugin>
+    <version.maven-site-plugin>3.8.2</version.maven-site-plugin>
     <!-- reporting versions -->
+    <version.maven-changes-plugin>2.12.1</version.maven-changes-plugin>
     <version.maven-project-info-reports-plugin>3.0.0</version.maven-project-info-reports-plugin>
+    <version.taglist-maven-plugin>2.4</version.taglist-maven-plugin>
   </properties>
 
   <build>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctor-maven-plugin</artifactId>
+          <version>${version.asciidoctor-maven-plugin}</version>
+        </plugin>
         <plugin>
           <artifactId>maven-antrun-plugin</artifactId>
           <version>${version.maven-antrun-plugin}</version>
@@ -46,31 +58,59 @@
           <version>${version.maven-assembly-plugin}</version>
         </plugin>
         <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${version.maven-clean-plugin}</version>
+        </plugin>
+        <plugin>
           <artifactId>maven-dependency-plugin</artifactId>
           <version>${version.maven-dependency-plugin}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${version.maven-deploy-plugin}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${version.maven-install-plugin}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${version.maven-jar-plugin}</version>
         </plugin>
         <plugin>
           <artifactId>maven-release-plugin</artifactId>
           <version>${version.maven-release-plugin}</version>
         </plugin>
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${version.maven-site-plugin}</version>
+        </plugin>
+        <!-- reporting plugins -->
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>${version.maven-project-info-reports-plugin}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-changes-plugin</artifactId>
+          <version>${version.maven-changes-plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>taglist-maven-plugin</artifactId>
+          <version>${version.taglist-maven-plugin}</version>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
-      <plugin>
-        <artifactId>maven-clean-plugin</artifactId>
-        <version>${version.maven-clean-plugin}</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>${version.maven-deploy-plugin}</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-install-plugin</artifactId>
-        <version>${version.maven-install-plugin}</version>
-      </plugin>
+        <plugin>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctor-maven-plugin</artifactId>
+          <configuration>
+            <sourceDirectory>${basedir}/src/asciidoc</sourceDirectory>
+          </configuration>
+        </plugin>
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
-        <version>${version.maven-site-plugin}</version>
         <configuration>
           <inputEncoding>UTF-8</inputEncoding>
           <outputEncoding>UTF-8</outputEncoding>
@@ -102,10 +142,19 @@
   <reporting>
     <plugins>
       <plugin>
+        <!-- changes reports -->
+        <artifactId>maven-changes-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>changes-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
         <!-- standard reports -->
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>${version.maven-project-info-reports-plugin}</version>
         <reportSets>
           <reportSet>
             <reports>
@@ -119,27 +168,13 @@
         </reportSets>
       </plugin>
       <plugin>
-        <!-- changes reports -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changes-plugin</artifactId>
-        <version>2.11</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>changes-report</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
-        <version>2.4</version>
         <configuration>
           <tagListOptions>
             <tagClasses>
               <tagClass>
-                <displayName>Todo </displayName>
+                <displayName>Todo</displayName>
                 <tags>
                   <tag>
                     <matchString>todo</matchString>
