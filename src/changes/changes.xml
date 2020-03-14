@@ -4,6 +4,17 @@
   xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
   <body>
     <release
+      version="5.4"
+      description="plugins and versioning"
+      date="2018-12-28">
+      <action type="update">
+        Rework pom to use plugin management always. 
+      </action>
+      <action type="add">
+        Add more plugins with versions. 
+      </action>
+    </release>
+    <release
       version="5.3"
       description="less maven properties"
       date="2018-12-28">
